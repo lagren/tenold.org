@@ -3,51 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://192.168.1.101:1313/post/2018/06/foo-bar-baz/</loc>
+    <loc>https://tenold.org/post/2018/06/foo-bar-baz/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/categories/</loc>
+    <loc>https://tenold.org/categories/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/post/</loc>
+    <loc>https://tenold.org/post/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/categories/programming/</loc>
+    <loc>https://tenold.org/categories/programming/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/</loc>
+    <loc>https://tenold.org/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/tags/tag1/</loc>
+    <loc>https://tenold.org/tags/tag1/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/tags/tag2/</loc>
+    <loc>https://tenold.org/tags/tag2/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/tags/</loc>
+    <loc>https://tenold.org/tags/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/top/about/</loc>
+    <loc>https://tenold.org/top/about/</loc>
   </url>
   
   <url>
-    <loc>http://192.168.1.101:1313/top/</loc>
+    <loc>https://tenold.org/top/</loc>
   </url>
   
 </urlset>

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ShareCode</title>
-    <link>http://192.168.1.101:1313/</link>
+    <link>https://tenold.org/</link>
     <description>Recent content on ShareCode</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://192.168.1.101:1313/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tenold.org/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>An Example Post</title>
-      <link>http://192.168.1.101:1313/post/2018/06/foo-bar-baz/</link>
+      <link>https://tenold.org/post/2018/06/foo-bar-baz/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://192.168.1.101:1313/post/2018/06/foo-bar-baz/</guid>
+      <guid>https://tenold.org/post/2018/06/foo-bar-baz/</guid>
       <description>... func init() { fmt.Println(&amp;#34;Hello, World!&amp;#34;) } ...  </description>
     </item>
     
     <item>
       <title>About me</title>
-      <link>http://192.168.1.101:1313/top/about/</link>
+      <link>https://tenold.org/top/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://192.168.1.101:1313/top/about/</guid>
+      <guid>https://tenold.org/top/about/</guid>
       <description>Helleo</description>
     </item>
     
