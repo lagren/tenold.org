@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Automatic releases using GitHub Actions" />
+    <meta property="og:title" content="Automatic releases using GitHub Actions" />
+    <meta property="twitter:title" content="Automatic releases using GitHub Actions" />
     
 
     
-    <meta name="description" content="">
-    <meta property="og:description" content="" />
-    <meta property="twitter:description" content="" />
+    <meta name="description" content="GitHub Actions is an awesome new feature for GitHub users who want to automate some parts of their workflow.">
+    <meta property="og:description" content="GitHub Actions is an awesome new feature for GitHub users who want to automate some parts of their workflow." />
+    <meta property="twitter:description" content="GitHub Actions is an awesome new feature for GitHub users who want to automate some parts of their workflow." />
     
 
     
@@ -32,22 +32,22 @@
     
 
     <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Tops-Bifty</title>
+    <title>Automatic releases using GitHub Actions-Bifty</title>
 
-    <link rel="canonical" href="../top/">
+    <link rel="canonical" href="../../post/auto-release-github-action/">
 
-    <link rel="stylesheet" href="../css/iDisqus.min.css"/>
+    <link rel="stylesheet" href="../../css/iDisqus.min.css"/>
 	
     
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="../css/hux-blog.min.css">
+    <link rel="stylesheet" href="../../css/hux-blog.min.css">
 
     
-    <link rel="stylesheet" href="../css/zanshang.css">
+    <link rel="stylesheet" href="../../css/zanshang.css">
     
     
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -57,13 +57,13 @@
 
     
     
-    <script src="../js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     
     
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     
     
-    <script src="../js/hux-blog.min.js"></script>
+    <script src="../../js/hux-blog.min.js"></script>
 
     
     
@@ -82,7 +82,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../">wheel.reinvent()</a>
+            <a class="navbar-brand" href="../../">wheel.reinvent()</a>
         </div>
 
         
@@ -91,12 +91,12 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="../">Home</a>
+                        <a href="../../">Home</a>
                     </li>
                     
                         
                         <li>
-                            <a href="../categories/tech">tech</a>
+                            <a href="../../categories/tech">tech</a>
                         </li>
                         
                     
@@ -142,14 +142,37 @@
 
 
 
-<header class="intro-header" style="background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>wheel.reinvent() </h1>
-                    
-		    <span class="subheading">Reinventing the wheel, so you don&#39;t have to!</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="../../tags/github" title="github">
+                            github
+                        </a>
+                        
+                    </div>
+                    <h1>Automatic releases using GitHub Actions</h1>
+                    <h2 class="subheading">Create a release when merging a pull request using a simple naming convention</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Eirik Tenold
+                         
+                        on 
+                        Sunday, March 29, 2020
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -162,13 +185,69 @@
 <article>
     <div class="container">
         <div class="row">
+
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
+                
+                <p><a href="https://github.com/features/actions">GitHub Actions</a> is an awesome new feature for GitHub users who want to automate some parts of their workflow. As proof of concept, I created a workflow that will do the following:</p>
+<ul>
+<li>When a Pull Request is closed create a new release if certain conditions are met:
+<ol>
+<li>The pull request must have been merged (i.e. not just closed without merge)</li>
+<li>The pull request is from a branch with a name <code>release/</code>-prefix</li>
+</ol>
+</li>
+<li>Create a new tag using the name from the pull request&rsquo;s title</li>
+<li>Create a new release associated with the newly created tag
+<ul>
+<li>The release&rsquo;s name is the same as the tag and is from the pull request&rsquo;s title</li>
+<li>The release&rsquo;s body if the body from the pull request</li>
+</ul>
+</li>
+</ul>
+<p>Example workflow: <code>.github/workflows/main.yml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: Create release
+<span style="color:#66d9ef">on</span>:
+  <span style="color:#66d9ef">pull_request</span>:
+    <span style="color:#66d9ef">types</span>: [closed]
+<span style="color:#66d9ef">jobs</span>:
+  <span style="color:#66d9ef">build</span>:
+    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
+    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">uses</span>: actions/checkout@v2
+    - <span style="color:#66d9ef">name</span>: Create Release
+      <span style="color:#66d9ef">if</span>: github.event.pull_request.merged == <span style="color:#66d9ef">true</span> <span style="color:#75715e">&amp;&amp;</span> startsWith(github.event.pull_request.head.ref, <span style="color:#e6db74">&#39;release/&#39;</span>)
+      <span style="color:#66d9ef">uses</span>: actions/create-release@latest
+      <span style="color:#66d9ef">env</span>:
+        <span style="color:#66d9ef">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+      <span style="color:#66d9ef">with</span>:
+        <span style="color:#66d9ef">tag_name</span>: ${{ github.event.pull_request.title }}
+        <span style="color:#66d9ef">release_name</span>: ${{ github.event.pull_request.title }}
+        <span style="color:#66d9ef">body</span>: ${{ github.event.pull_request.body }}</code></pre></div>
+<p>Ideas for future changes:</p>
+<ul>
+<li>Instead a using a branch name prefix, check for the existance of a label</li>
+<li>Auto create tag name (semantic versioning, increase by one, etc)</li>
+</ul>
+<p>References:</p>
+<ul>
+<li><a href="https://developer.github.com/v3/activity/events/types/">Event Types &amp; Payloads</a> - <em>developer.github.com</em></li>
+<li><a href="https://github.com/actions/create-release">GitHub Action - Releases API</a> - <em>github.com</em></li>
+</ul>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    
+                </ul>
+
                 
 <div id="disqus-comment"></div>
 
@@ -177,7 +256,7 @@
             </div>
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -185,13 +264,13 @@
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="../tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="../../tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                         
                         
                         
-                        <a href="../tags/github" title="github">
-                        github
+                        <a href="../../tags/github" title="github">
+                            github
                         </a>
                         
                         
