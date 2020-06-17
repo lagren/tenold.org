@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Improve Spinnaker Kubernetes Deployment Speed by disabling cache" />
+    <meta property="og:title" content="Improve Spinnaker Kubernetes Deployment Speed by disabling cache" />
+    <meta property="twitter:title" content="Improve Spinnaker Kubernetes Deployment Speed by disabling cache" />
     
 
     
@@ -32,22 +32,22 @@
     
 
     <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Tops-Bifty</title>
+    <title>Improve Spinnaker Kubernetes Deployment Speed by disabling cache-Bifty</title>
 
-    <link rel="canonical" href="../top/">
+    <link rel="canonical" href="../../til/2020-06-17-improve-spinnaker-kubernetes-deployment-speed/">
 
-    <link rel="stylesheet" href="../css/iDisqus.min.css"/>
+    <link rel="stylesheet" href="../../css/iDisqus.min.css"/>
 	
     
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="../css/hux-blog.min.css">
+    <link rel="stylesheet" href="../../css/hux-blog.min.css">
 
     
-    <link rel="stylesheet" href="../css/zanshang.css">
+    <link rel="stylesheet" href="../../css/zanshang.css">
     
     
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -57,13 +57,13 @@
 
     
     
-    <script src="../js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     
     
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     
     
-    <script src="../js/hux-blog.min.js"></script>
+    <script src="../../js/hux-blog.min.js"></script>
 
     
     
@@ -82,7 +82,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../">/home/eirik</a>
+            <a class="navbar-brand" href="../../">/home/eirik</a>
         </div>
 
         
@@ -91,18 +91,18 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="../">Home</a>
+                        <a href="../../">Home</a>
                     </li>
                     
                         
                         <li>
-                            <a href="../categories/tech">tech</a>
+                            <a href="../../categories/tech">tech</a>
                         </li>
                         
                     
                     
 		    
-                        <li><a href="../til/">Today I Learned</a></li>
+                        <li><a href="../../til/">Today I Learned</a></li>
                     
 
                     
@@ -144,14 +144,45 @@
 
 
 
-<header class="intro-header" style="background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>/home/eirik </h1>
-                    
-		    <span class="subheading">Reinventing the wheel, so you don&#39;t have to!</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="../../tags/spinnaker" title="spinnaker">
+                            spinnaker
+                        </a>
+                        
+                        <a class="tag" href="../../tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        <a class="tag" href="../../tags/gke" title="gke">
+                            gke
+                        </a>
+                        
+                    </div>
+                    <h1>Improve Spinnaker Kubernetes Deployment Speed by disabling cache</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                /home/eirik
+                         
+                        on 
+                        Wednesday, June 17, 2020
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -164,13 +195,46 @@
 <article>
     <div class="container">
         <div class="row">
+
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
+                
+                <p>After I added a new Kubernetes cluster to our Spinnaker instance I forgot to disable caching of
+manifests. This caused all deployments to take around 20 minutes. Without the cache enabled it only
+took 3 minutes to finish.</p>
+<p>If you see that your deploys spends a long time in <em>Force Cache Refresh</em> and <em>Wait For Manifest To
+Stabilize</em>, then it might be worth you time to try this.</p>
+<p>This is even specified in the Halyard <a href="https://www.spinnaker.io/reference/halyard/commands/#parameters-465">command reference</a>.</p>
+<blockquote>
+<p>When true, clouddriver will query manifest status during pipeline executions using live data
+rather than the cache. This eliminates all time spent in the “force cache refresh” task in
+pipelines, greatly reducing execution time.</p>
+</blockquote>
+<p>First find the account name:</p>
+<pre><code>hal config provider kubernetes account list
+</code></pre>
+<p>The command to turn of the cache is</p>
+<pre><code>hal config provider kubernetes account edit [ACCOUNT] --live-manifest-calls=true
+</code></pre>
+<p>Happy deploying!</p>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="../../til/2020-06-17-change-default-namespace-in-spinnaker/" data-toggle="tooltip" data-placement="top" title="Change Default Namespace in Spinnaker">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
                 
 <div id="disqus-comment"></div>
 
@@ -179,7 +243,7 @@
             </div>
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -187,31 +251,31 @@
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="../tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="../../tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                         
                         
                         
-                        <a href="../tags/github" title="github">
-                        github
+                        <a href="../../tags/github" title="github">
+                            github
                         </a>
                         
                         
                         
-                        <a href="../tags/gke" title="gke">
-                        gke
+                        <a href="../../tags/gke" title="gke">
+                            gke
                         </a>
                         
                         
                         
-                        <a href="../tags/kubernetes" title="kubernetes">
-                        kubernetes
+                        <a href="../../tags/kubernetes" title="kubernetes">
+                            kubernetes
                         </a>
                         
                         
                         
-                        <a href="../tags/spinnaker" title="spinnaker">
-                        spinnaker
+                        <a href="../../tags/spinnaker" title="spinnaker">
+                            spinnaker
                         </a>
                         
                         

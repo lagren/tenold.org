@@ -4,27 +4,42 @@
   
   <url>
     <loc>https://tenold.org/til/</loc>
-    <lastmod>2020-06-17T20:40:12+09:00</lastmod>
+    <lastmod>2020-06-17T21:14:32+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tenold.org/</loc>
-    <lastmod>2020-06-17T20:40:12+09:00</lastmod>
+    <lastmod>2020-06-17T21:14:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tenold.org/til/2020-06-17-change-default-namespace-in-spinnaker/</loc>
-    <lastmod>2020-06-17T20:40:12+09:00</lastmod>
+    <loc>https://tenold.org/tags/gke/</loc>
+    <lastmod>2020-06-17T21:14:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tenold.org/til/2020-06-17-improve-spinnaker-kubernetes-deployment-speed/</loc>
+    <lastmod>2020-06-17T21:14:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tenold.org/tags/kubernetes/</loc>
+    <lastmod>2020-06-17T21:14:32+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://tenold.org/tags/spinnaker/</loc>
-    <lastmod>2020-06-17T20:40:12+09:00</lastmod>
+    <lastmod>2020-06-17T21:14:32+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://tenold.org/tags/</loc>
+    <lastmod>2020-06-17T21:14:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tenold.org/til/2020-06-17-change-default-namespace-in-spinnaker/</loc>
     <lastmod>2020-06-17T20:40:12+09:00</lastmod>
   </url>
   

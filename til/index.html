@@ -175,6 +175,16 @@
 
                 
                 <div>
+                    <h5>Jun 17, 2020 <a href="../til/2020-06-17-improve-spinnaker-kubernetes-deployment-speed/">Improve Spinnaker Kubernetes Deployment Speed by disabling cache</a></h5>
+                    <p>After I added a new Kubernetes cluster to our Spinnaker instance I forgot to disable caching of
+manifests. This caused all deployments to take around 20 minutes. Without the cache enabled it only
+took 3 minutes to finish.</p>
+<p>If you see that your deploys spends a long time in <em>Force Cache Refresh</em> and <em>Wait For Manifest To
+Stabilize</em>, then it might be worth you time to try this.</p>
+                    <p><a href="../til/2020-06-17-improve-spinnaker-kubernetes-deployment-speed/">read more...</a></p>
+                </div>
+                
+                <div>
                     <h5>Jun 17, 2020 <a href="../til/2020-06-17-change-default-namespace-in-spinnaker/">Change Default Namespace in Spinnaker</a></h5>
                     <p>Today I had to fix a problem with Spinnaker deployments. After a Spinnaker upgrade, a new error
 popped up</p>

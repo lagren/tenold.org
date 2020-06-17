@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>/home/eirik</title>
-    <link>https://tenold.org/til/</link>
-    <description>Recent content on /home/eirik</description>
+    <title>kubernetes on /home/eirik</title>
+    <link>https://tenold.org/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on /home/eirik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 17 Jun 2020 21:14:32 +0900</lastBuildDate>
     
-	<atom:link href="https://tenold.org/til/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tenold.org/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -36,15 +36,6 @@ popped up&lt;/p&gt;
 &lt;p&gt;Deploy failed: Error from server (NotFound): error when creating &amp;ldquo;STDIN&amp;rdquo;: namespaces &amp;ldquo;spinnaker&amp;rdquo;
 not found&lt;/p&gt;
 &lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>Direct link for the State of DevOps 2019 report</title>
-      <link>https://tenold.org/til/2020-04-22-dora-report/</link>
-      <pubDate>Wed, 22 Apr 2020 21:41:36 +0900</pubDate>
-      
-      <guid>https://tenold.org/til/2020-04-22-dora-report/</guid>
-      <description>&lt;p&gt;Today I registered my email and phone number to download the free &lt;a href=&#34;https://cloud.google.com/blog/products/devops-sre/the-2019-accelerate-state-of-devops-elite-performance-productivity-and-scaling&#34;&gt;State of DevOps 2019 report&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
   </channel>
