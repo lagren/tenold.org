@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on /home/eirik</title>
+    <title>Blog posts on /home/eirik</title>
     <link>https://tenold.org/post/</link>
-    <description>Recent content in Posts on /home/eirik</description>
+    <description>Recent content in Blog posts on /home/eirik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Mar 2020 00:00:00 +0000</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://tenold.org/post/auto-release-github-action/</guid>
-      <description>GitHub Actions is an awesome new feature for GitHub users who want to automate some parts of their workflow. As proof of concept, I created a workflow that will do the following:
- When a Pull Request is closed create a new release if certain conditions are met:  The pull request must have been merged (i.e. not just closed without merge) The pull request is from a branch with a name release/-prefix   Create a new tag using the name from the pull request&amp;rsquo;s title Create a new release associated with the newly created tag  The release&amp;rsquo;s name is the same as the tag and is from the pull request&amp;rsquo;s title The release&amp;rsquo;s body if the body from the pull request    Example workflow: .</description>
+      <description>GitHub Actions is an awesome new feature for GitHub users who want to automate some parts of their workflow</description>
     </item>
     
   </channel>

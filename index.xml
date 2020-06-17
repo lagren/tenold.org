@@ -6,10 +6,24 @@
     <description>Recent content on /home/eirik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Apr 2020 21:41:36 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 20:40:12 +0900</lastBuildDate>
     
 	<atom:link href="https://tenold.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Change Default Namespace in Spinnaker</title>
+      <link>https://tenold.org/til/2020-06-17-change-default-namespace-in-spinnaker/</link>
+      <pubDate>Wed, 17 Jun 2020 20:40:12 +0900</pubDate>
+      
+      <guid>https://tenold.org/til/2020-06-17-change-default-namespace-in-spinnaker/</guid>
+      <description>&lt;p&gt;Today I had to fix a problem with Spinnaker deployments. After a Spinnaker upgrade, a new error
+popped up&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Deploy failed: Error from server (NotFound): error when creating &amp;ldquo;STDIN&amp;rdquo;: namespaces &amp;ldquo;spinnaker&amp;rdquo;
+not found&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>Direct link for the State of DevOps 2019 report</title>
@@ -26,8 +40,7 @@
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://tenold.org/post/auto-release-github-action/</guid>
-      <description>GitHub Actions is an awesome new feature for GitHub users who want to automate some parts of their workflow. As proof of concept, I created a workflow that will do the following:
- When a Pull Request is closed create a new release if certain conditions are met:  The pull request must have been merged (i.e. not just closed without merge) The pull request is from a branch with a name release/-prefix   Create a new tag using the name from the pull request&amp;rsquo;s title Create a new release associated with the newly created tag  The release&amp;rsquo;s name is the same as the tag and is from the pull request&amp;rsquo;s title The release&amp;rsquo;s body if the body from the pull request    Example workflow: .</description>
+      <description>GitHub Actions is an awesome new feature for GitHub users who want to automate some parts of their workflow</description>
     </item>
     
     <item>

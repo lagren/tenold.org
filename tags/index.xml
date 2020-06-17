@@ -6,10 +6,19 @@
     <description>Recent content in Tags on /home/eirik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 20:40:12 +0900</lastBuildDate>
     
 	<atom:link href="https://tenold.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>spinnaker</title>
+      <link>https://tenold.org/tags/spinnaker/</link>
+      <pubDate>Wed, 17 Jun 2020 20:40:12 +0900</pubDate>
+      
+      <guid>https://tenold.org/tags/spinnaker/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>github</title>

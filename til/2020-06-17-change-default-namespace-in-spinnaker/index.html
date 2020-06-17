@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Change Default Namespace in Spinnaker" />
+    <meta property="og:title" content="Change Default Namespace in Spinnaker" />
+    <meta property="twitter:title" content="Change Default Namespace in Spinnaker" />
     
 
     
@@ -32,22 +32,22 @@
     
 
     <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Tags-Bifty</title>
+    <title>Change Default Namespace in Spinnaker-Bifty</title>
 
-    <link rel="canonical" href="../tags/">
+    <link rel="canonical" href="../../til/2020-06-17-change-default-namespace-in-spinnaker/">
 
-    <link rel="stylesheet" href="../css/iDisqus.min.css"/>
+    <link rel="stylesheet" href="../../css/iDisqus.min.css"/>
 	
     
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="../css/hux-blog.min.css">
+    <link rel="stylesheet" href="../../css/hux-blog.min.css">
 
     
-    <link rel="stylesheet" href="../css/zanshang.css">
+    <link rel="stylesheet" href="../../css/zanshang.css">
     
     
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -57,13 +57,13 @@
 
     
     
-    <script src="../js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     
     
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     
     
-    <script src="../js/hux-blog.min.js"></script>
+    <script src="../../js/hux-blog.min.js"></script>
 
     
     
@@ -82,7 +82,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../">/home/eirik</a>
+            <a class="navbar-brand" href="../../">/home/eirik</a>
         </div>
 
         
@@ -91,18 +91,18 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="../">Home</a>
+                        <a href="../../">Home</a>
                     </li>
                     
                         
                         <li>
-                            <a href="../categories/tech">tech</a>
+                            <a href="../../categories/tech">tech</a>
                         </li>
                         
                     
                     
 		    
-                        <li><a href="../til/">Today I Learned</a></li>
+                        <li><a href="../../til/">Today I Learned</a></li>
                     
 
                     
@@ -144,14 +144,37 @@
 
 
 
-<header class="intro-header" style="background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>/home/eirik </h1>
-                    
-		    <span class="subheading">Reinventing the wheel, so you don&#39;t have to!</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="../../tags/spinnaker" title="spinnaker">
+                            spinnaker
+                        </a>
+                        
+                    </div>
+                    <h1>Change Default Namespace in Spinnaker</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                /home/eirik
+                         
+                        on 
+                        Wednesday, June 17, 2020
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -164,13 +187,59 @@
 <article>
     <div class="container">
         <div class="row">
+
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
+                
+                <p>Today I had to fix a problem with Spinnaker deployments. After a Spinnaker upgrade, a new error
+popped up</p>
+<blockquote>
+<p>Deploy failed: Error from server (NotFound): error when creating &ldquo;STDIN&rdquo;: namespaces &ldquo;spinnaker&rdquo;
+not found</p>
+</blockquote>
+<p>The deployment did not specify a target namespace. My best guess was that somewhere in our
+Spinnaker stack the default namespace for deployment had changed.</p>
+<p>The setup looks like this: <a href="https://www.spinnaker.io/">Spinnaker</a> (version 1.20.5) deployed on <a href="https://cloud.google.com/kubernetes-engine">Google Kubernetes Engine</a>
+using <a href="https://github.com/GoogleCloudPlatform/spinnaker-for-gcp">GoogleCloudPlatform/spinnaker-for-gcp</a>.</p>
+<p>Spinnaker is using the default namespace specified in the kubectl context. In my case there was no
+namespace specified.</p>
+<p>Using the <a href="https://ssh.cloud.google.com/cloudshell/editor">Google Cloud Shell</a>, navigate to the directory with scripts for manage your install and pull the active configuration:</p>
+<pre><code>cd cloudshell_open/spinnaker-for-gcp/scripts/manage/
+./pull_config.sh
+</code></pre>
+<p>Use <code>hal</code> to list all accounts:</p>
+<pre><code>hal config provider kubernetes account list
+</code></pre>
+<p>Copy the account name and then use it to get more details:</p>
+<pre><code>hal config provider kubernetes account get [ACCOUNT NAME]
+</code></pre>
+<p>Copy the values from <em>context</em> and <em>kubeconfigFile</em></p>
+<p>The next step is to use <code>kubectl</code> to specify a specific namespace for the context configuration</p>
+<pre><code>export KUBECONFIG=[KUBECONFIG FILE]
+kubectl config set-context [CONTEXT] --namespace=default
+</code></pre>
+<p>The final step is to upload the configuraion and apply:</p>
+<pre><code>./push_and_apply.sh
+</code></pre>
+<p>After all Spinnaker components has restarted, everything should be fine :-)</p>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="../../til/2020-04-22-dora-report/" data-toggle="tooltip" data-placement="top" title="Direct link for the State of DevOps 2019 report">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
                 
 <div id="disqus-comment"></div>
 
@@ -179,7 +248,7 @@
             </div>
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -187,19 +256,19 @@
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="../tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="../../tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                         
                         
                         
-                        <a href="../tags/github" title="github">
-                        github
+                        <a href="../../tags/github" title="github">
+                            github
                         </a>
                         
                         
                         
-                        <a href="../tags/spinnaker" title="spinnaker">
-                        spinnaker
+                        <a href="../../tags/spinnaker" title="spinnaker">
+                            spinnaker
                         </a>
                         
                         
